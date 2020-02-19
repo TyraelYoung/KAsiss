@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDuplicates">
+        <ignore path="src/main/res/drawable-xhdpi/ssdk_oks_classic_alipay.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ssdk_oks_classic_alipaymoments.png" />
+    </issue>
+</lint>

@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系方式"
+            android:textColor="#505358" />
+
+        <EditText
+            android:layout_gravity="center_vertical"
+            android:id="@+id/edit_feedback_link"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="邮箱、微信、qq、手机皆可"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="不同类型的反馈，由不同工作人员查看。" />
+
+    <RadioGroup
+        android:id="@+id/rg_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_feedback_tech"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="技术问题(闪退、卡顿、打不开等)" />
+
+        <RadioButton
+            android:id="@+id/rb_feedback_function"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="功能问题(建议新功能、操作不方便等)" />
+
+        <RadioButton
+            android:id="@+id/rb_feedback_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="19dp"
+        android:background="#d9d9d9" />
+
+    <EditText
+        android:id="@+id/edit_feedback_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:hint="欢迎反馈问题，我们会对问题进行分类并处理。"
+        android:textSize="13dp" />
+
+
+</LinearLayout>

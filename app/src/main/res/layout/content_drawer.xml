@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.shuitianyun.kassistant.activity.DrawerActivity"
+    tools:showIn="@layout/app_bar_drawer"
+    android:orientation="vertical">
+
+    <TextView style="@style/Base.V12.Widget.AppCompat.EditText"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/tv_bulletin"
+        android:text="欢迎使用K歌助理，有任何问题可以从右上角反馈给我们。\n本应用是腾讯全民K歌的辅助工具。可以帮助您将全民K歌的歌曲导出。"
+        />
+
+    <Button
+        style="@style/BnMain"
+        android:id="@+id/bn_main_localsong"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="导出本地歌曲"
+        />
+
+    <Button
+        style="@style/BnMain"
+        app:layout_constraintTop_toBottomOf="@+id/bn_main_localsong"
+        android:id="@+id/bn_publish"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="导出已发布歌曲"
+        />
+
+</LinearLayout>

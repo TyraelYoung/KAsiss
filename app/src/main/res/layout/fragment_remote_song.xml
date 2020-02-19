@@ -1,0 +1,130 @@
+<!--防止edittext自动获取焦点，呼起键盘-->
+    <!--android:focusable="true"-->
+    <!--android:focusableInTouchMode="true"-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_vertical_margin"
+    tools:context="com.shuitianyun.kassistant.fragment.RemoteSongFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <Button
+                    style="@style/BnMain"
+                    android:id="@+id/btnToQuanMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Step 1. 进入全民K歌，找到爱听的歌，复制原始链接"
+                    app:layout_constraintLeft_toRightOf="@+id/ivHelp" />
+
+                <Button
+                    style="@style/BnMain"
+                    android:id="@+id/btnPaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Step 2. 粘贴链接到本页面" />
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="原始链接：" />
+
+                <EditText
+                    android:inputType="textUri|textMultiLine"
+                    android:id="@+id/etOriginalSongUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入通过分享 -> 复制链接获取的地址"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivHelp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:adjustViewBounds="true"
+                android:src="@drawable/help"
+                app:layout_constraintRight_toLeftOf="@+id/btnToQuanMin" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="中转链接："
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/tvRealSongUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+        </LinearLayout>
+
+        <Button
+            style="@style/BnMain"
+            android:id="@+id/btnGetUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Step 3. 生成中转链接" />
+
+        <Button
+            style="@style/BnMain"
+            android:visibility="gone"
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Step 4. 通过微信等发送中转链接" />
+
+        <Button
+            style="@style/BnMain"
+            android:id="@+id/btnCopy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="复制中转链接" />
+
+        <Button
+            style="@style/BnMain"
+            android:id="@+id/btnSaveAs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="另存为" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="中转链接可以在浏览器中下载到本地。文件格式是m4a, m4a文件比mp3效率更高。"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+    </LinearLayout>
+</ScrollView>

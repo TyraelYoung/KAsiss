@@ -1,0 +1,9 @@
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="BnMain">
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/colorPrimary</item>
+        <item name="android:textColor" tools:targetApi="lollipop">@color/colorBnText</item>
+    </style>
+
+</resources>

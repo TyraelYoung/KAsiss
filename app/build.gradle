@@ -1,0 +1,144 @@
+apply plugin: 'com.android.application'
+//bugly 符号表自动上传 https://bugly.qq.com/docs/user-guide/symbol-configuration-android/?v=20170322165254#android-studio
+apply plugin: 'bugly'
+//bugly 符号表自动上传 https://bugly.qq.com/docs/user-guide/symbol-configuration-android/?v=20170322165254#android-studio
+bugly {
+    appId = '0c7167e53f' // 注册时分配的App ID
+    appKey = '43a7f8f0-a207-4799-9f06-0a479f02c0c8' // 注册时分配的App Key
+}
+
+android {
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //这里修改apk文件名
+                def fileName = "KAssistant_${variant.productFlavors[0].name}_${defaultConfig.versionName}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+
+// 多渠道打包
+    productFlavors {
+//       dev {
+//            manifestPlaceholders = [channel: "dev"]
+//        }
+        bugly {
+            manifestPlaceholders = [channel: "bugly"]
+        }
+//        ali {
+//            manifestPlaceholders = [channel: "ali"]
+//        }
+        yingYongBao {
+            manifestPlaceholders = [channel: "yingYongBao"]
+        }
+//        huaiwei {
+//            manifestPlaceholders = [channel: "huaiwei"]
+//        }
+        coolapk {
+            manifestPlaceholders = [channel: "coolapk"]
+        }
+//        baidu {
+//            manifestPlaceholders = [channel: "baidu"]
+//        }
+//        baiduApp{
+//            manifestPlaceholders = [channel: "BAIDU_SHOUJIZHUSHOU"]
+//        }
+//        qihuApp {
+//            manifestPlaceholders = [channel: "QIHU360_SHOUJIZHUSHOU"]
+//        }
+//        xiaomiApp{
+//            manifestPlaceholders = [channel: "XIAOMI_SHOP"]
+//        }
+        otherMarket {
+            manifestPlaceholders = [channel: "otherMarket"]
+        }
+
+    }
+
+    lintOptions {
+        // Turns off checks for the issue IDs you specify.
+        disable 'MissingTranslation'
+        // Turns on checks for the issue IDs you specify. These checks are in
+        // addition to the default lint checks.
+//        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        // To enable checks for only a subset of issue IDs and ignore all others,
+        // list the issue IDs with the 'check' property instead. This property overrides
+        // any issue IDs you enable or disable using the properties above.
+//        check 'NewApi', 'InlinedApi'
+        // If set to true, turns off analysis progress reporting by lint.
+//        quiet true
+        // if set to true (default), stops the build if errors are found.
+//        abortOnError true
+        // if true, only report errors.
+//        ignoreWarnings true
+    }
+
+
+    signingConfigs {
+        st {
+            keyAlias 'kassistant'
+            keyPassword 'shuitian456'
+            storeFile file('./st.jks')
+            storePassword 'shuitian123'
+        }
+    }
+    //bos的sdk
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.shuitianyun.kassistant"
+        minSdkVersion 16
+        targetSdkVersion 25
+//        versionCode 10
+//        versionName "0.2.0"
+        versionCode 999
+        versionName "9.9.9"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+
+        //分包，解决65535问题
+        multiDexEnabled true
+
+        //jdk8支持
+//        jackOptions {
+//            enabled true
+//        }
+    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.st
+            debuggable false
+        }
+    }
+}
+
+dependencies {
+    //分包，解决65535问题
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs/bce')
+    //    compile fileTree(dir: 'libs/third-party', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(path: ':cslibrary')
+    // jsoup HTML parser library @ http://jsoup.org/
+    //    compile 'org.jsoup:jsoup:1.10.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile 'com.android.support:support-vector-drawable:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
